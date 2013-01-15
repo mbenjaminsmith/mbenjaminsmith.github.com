@@ -1,2 +1,2 @@
 #!/bin/sh
-touch ./testfile
+cp -r ./_source/* ./
