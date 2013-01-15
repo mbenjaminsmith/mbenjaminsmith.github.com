@@ -1,3 +1,6 @@
+source: ./_source
+plugins: ./_source/_plugins
+
 auto: true
 permalink: /blog/:year/:month/:day/:title.html
 

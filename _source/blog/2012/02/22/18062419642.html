@@ -9,7 +9,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title> RapidFire Studio Limited</title>
+  <title> Why We Switched to Unity3d | RapidFire Studio Limited</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   
@@ -76,9 +76,63 @@
 <div class="container content">
 
  <div class="row maincontent">
-  <div class="twelve columns">
-    <h1>404 \ Not Found</h1>
-    <h2>The thing you seek does not exist in this universe. Please check out our <a href="/">home page</a> instead.</h2>
+  <div class="eight columns">
+    <h1>Why We Switched to Unity3d</h1>
+    <p>When we started GameSmith I talked briefly about writing a game engine. To summarize, it&#8217;s rarely a good idea to do so. When you&#8217;re a small / bootstrapping / indie company you should constantly be searching for leverage in the tools and resources available to you, not creating more work for yourselves. Using a game engine was a straightforward decision for us, but we did spend quite a bit of time deciding what game engine to use. We originally thought Unity3D was too resource hungry (as our primary platform is iOS) and wanted something closer to the metal. After some preliminary work, we changed our mind. I&#8217;ll outline why below.</p>
+
+<p>I won&#8217;t go into all of the engines we looked at since I don&#8217;t want to do a comparison (at this time). After quite a bit of research and testing things out we zeroed in on Unity. I want to outline our thoughts on that to help anyone one else evaluating the platform.</p>
+
+<p>Our decision making in general:</p>
+
+<ol><li>Within reason, price should not be a factor. Or, there&#8217;s no such thing as free. Any engine requires an enormous investment in time (which of course is money).</li>
+
+<li>Following that, open source / free is not free and not necessarily the best community dynamic for tools used in commercial products. Open source in general is awesome and necessary and we support it 100%, but for tools used to make commercial products, a for-profit, customer driven company will often be a better fit for a for-profit, product driven company.</li>
+
+<li>It&#8217;s easier for a 3D engine to do 2D than vice versa. By investing in a 3D engine, we would keep our options open.</li>
+
+<li>For 2.5D (the middle road case) you&#8217;re either baking your 3D models beforehand (with a 2D engine) or rendering them dynamically with a fixed camera position. Either way you can use the same models, though using a 3D engine provides a much more efficient pipeline. A good example would be changing the perspective of your camera. With a 3D engine, this is instantaneous and free. With a 2D engine, you have to re-render every model in the scene.</li>
+
+<li>Cross platform might be a bad decision if you&#8217;re primarily focused on one device market and it comes with too many compromises. However, if you can get away with it, investing in something that is cross platform greatly increases the future potential of your project.</li>
+
+</ol><p><img src="http://media.tumblr.com/tumblr_lzsb9qR8mm1r4qkx4.png"/></p>
+
+<p>We spent about a month with Unity before committing to it. We&#8217;ve since put in a couple of months with it. I&#8217;ll outline our initial observations below:</p>
+
+<p>Unity3D pro:</p>
+
+<ol><li>3D engine (positives outlined above).</li>
+
+<li>Good, centralized documentation. </li>
+
+<li>Commercial (they have more responsibility to their stakeholders) though not terribly expensive.</li>
+
+<li>Strong 3rd party plugins and other resources available in the Unity Asset Store and on the web.</li>
+
+<li>True cross platform. While designing for different platforms is never straightforward, getting a game to run on multiple platforms with Unity (almost) is.</li>
+
+</ol><p>Unity3D con:</p>
+
+<ol><li>Sales team doesn&#8217;t answer emails. (They also don&#8217;t show up for appointments in person but that&#8217;s another story.)</li>
+
+<li>Pro license required to disable Unity splash screen. That means paying an additional $1500 USD. If you need other pro features, that&#8217;s not that big of a deal. In our case though we are only considering pro to get rid of the nag screen. That makes it an expensive decision.</li>
+
+<li>No realistic built-in UI toolkit. In order to put a UI in a finished product, that UI needs to be optimized (by reducing it to a single draw call) and work across multiple platforms. I assume they&#8217;re not pushing this obvious issue forward because there are several successful 3rd party add ons that do this properly. We&#8217;ve had success with <a href="https://github.com/prime31/UIToolkit">UIToolkit</a>.</li>
+
+<li>Weak touch support for touch enabled devices. </li>
+
+<li>No real support for 2D. This might seem silly given that it&#8217;s a 3D engine, but since 3D can easily handle 2D it should be looked at more seriously by the team. However, there have been successful 2D games built on Unity and there are several 3rd party add ons that aid in development.</li>
+
+</ol><p>In summary we&#8217;re pretty happy with Unity so far. It&#8217;s not perfect but we haven&#8217;t yet seen an alternative that fits our needs better.</p>
+
+<p>We&#8217;re just getting started with it and we hope to have the time to talk more about out experiences with it, the solutions we&#8217;ve found to its problems and hopefully be able to share some tutorials / code here for others to use.</p>
+
+  </div>
+  <div class="four columns">
+  	<h2>A RapidFire Blog</h2>
+<p>This blog consists of updates about this company as well as select information about the game industry and gaming.</p>
+<p>It's company policy to publish [DRAFTS] of posts that are felt to be informative but not yet in a final state.</p>
+<p>Posts are written by RapidFire's founder, Matthew Smith, unless otherwise noted.</p>
+<p>You're welcome to contact him: <a href="mailto:matthew@rapidfirestudio.com">matthew@rapidfirestudio.com</a></p>
   </div>
 </div>
 
