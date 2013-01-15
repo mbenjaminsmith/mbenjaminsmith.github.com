@@ -1,2 +1,2 @@
 #!/bin/sh
-echo "Precommitting..."
+touch ./testfile
