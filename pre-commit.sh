@@ -1,3 +1,2 @@
 #!/bin/sh
-
-cp -r ./_source/* ./
+echo "Pre-commit hook running..."
