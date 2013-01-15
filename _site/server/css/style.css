@@ -1,0 +1,104 @@
+/*=======================================================================
+
+	❤❤❤ Gumby by Digital Surgeons. ❤❤❤
+	
+	*** This is where you should keep all of your design specific styles ***
+ 
+ ========================================================================*/
+ 	body {
+  		background: #F9F9F7;
+  		background-image: url('../img/noise.png');
+  	}
+
+  	h2, h2 a {
+  	
+  	}
+
+  	.row {  
+  		
+  	}
+
+	.navbar {
+		border: none;
+		margin-bottom: 0;
+		background: none;
+	}
+
+	.navrow {
+		border-bottom: 1px solid #C94747;
+	}
+	
+	.navbar ul li {
+		border-right: none;
+		width: 125px;
+	}
+	
+	.navbar > ul > li > a {
+		display: block;
+		height: 70px;
+		font-size: 18px;
+		line-height: 1.5em;
+		padding: 0 15px;
+		padding: 0;
+		padding-bottom: 0;
+		white-space: nowrap;
+		color: #C94747;
+		font-weight: normal;
+		text-shadow: none;
+	}
+
+	.navbar > ul > li > a > .top {
+	
+	}
+
+	.navbar > ul > li:hover > a {	
+		background: none;
+	}
+
+	#logo {
+		display: block; 
+		margin-left: auto; 
+		margin-right: auto; 
+		width: 307px;
+		height: 307px;
+	}
+
+	.maincontent .columns {
+		padding: 40px;
+		padding-top: 150px;
+	}
+
+	img.landing.subheader {
+		margin-bottom: 30px;
+	}
+
+	.container.content {
+		padding-bottom: 100px;
+		clear: both;
+	}
+
+	.footer {
+		background-color: #C48686;
+		background-image: none;
+		color: #F9F9F7;
+	}
+
+	.footer a {
+		color: #F9F9F7;
+	}
+
+	.footer_left {
+		padding: 40px;
+	}
+
+	.footer_right {
+		padding: 40px;
+		text-align: right;
+	}
+
+	.footer_bottom {
+		text-align: center;
+	}
+
+	.footer_bottom p {
+	}

@@ -4,15 +4,15 @@ layout: default
 
 <div class="row maincontent">
   <div class="six columns">
-    <img class="landing subheader" src="img/h1welcome.png" />
+    <img class="landing subheader" src="img/h1welcome.png" width="113" height="49" />
     <p>RapidFire Studio makes games for people who like to have fun (and who doesn’t?).</p>
 	<p>We makes games that are accessible by many different types of players and that people can play across a wide aray of devices and platforms.</p>
 	<p>We think your next favorite game should be easy to get into and follow you around so that playing can easily fit into your lifestyle.<p>
   </div>
   <div class="six columns">
-    <img class="landing subheader" src="img/h1updates.png" />
+    <img class="landing subheader" src="img/h1updates.png" width="96" height="49" />
     {% for post in site.posts limit:3 %}
 		{% include post_intro.html %}
-	{% endfor %}
+	  {% endfor %}
   </div>
 </div>

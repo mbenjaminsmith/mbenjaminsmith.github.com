@@ -1,3 +1,39 @@
 ---
 layout: default
 ---
+
+<div class="row maincontent">
+  <div class="eight columns">
+    <h1>Most Recent Updates</h1>
+    {% for post in paginator.posts %}
+	<h2>{{ post.title }}</h2>
+	<div>
+		<p class="archive_excerpt">	
+			<span>{{ post.date | date: "%B %e, %Y" | ordinalize  }} &gt;&gt;</span>
+			{{ post.content | strip_html | truncatewords: 100 }} 
+			<a href="{{ post.url }}">read more &gt;&gt;</a></p>
+	</div>
+	{% endfor %}
+	<!-- Pagination links -->
+	<div class="pagination" style="text-align: right">
+	  {% if paginator.previous_page %}
+	  	{% if paginator.previous_page == 1 %}
+    	<a href="/blog.html" class="previous">&lt;&lt; previous</a>
+    	{% else %}
+    	<a href="/page{{ paginator.previous_page }}/blog.html" class="previous">&lt;&lt; previous</a>
+    	{% endif %}
+	  {% else %}
+	  <span class="previous">&lt;&lt; previous</span>
+	  {% endif %}
+	  .
+	  {% if paginator.next_page %}
+	  <a href="/page{{ paginator.next_page }}/blog.html" class="next">next &gt;&gt;</a>
+	  {% else %}
+	  <span class="next">next &gt;&gt;</span>
+	  {% endif %}
+    </div>
+  </div>
+  <div class="four columns">
+  	{% include blog_info.html %}
+  </div>
+</div>

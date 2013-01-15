@@ -10,26 +10,7 @@
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Regular.otf");
 }
-/*
-@font-face {
-    font-family: "Cabin";
-    src: url("/fonts/Cabin/Cabin-Bold.otf");
-    font-weight: bold;
-}
 
-@font-face {
-    font-family: "Cabin";
-    src: url("/fonts/Cabin/Cabin-Italic.otf");
-    font-style: italic, oblique;
-}
-
-@font-face {
-    font-family: "Cabin";
-    src: url("/fonts/Cabin/Cabin-BoldItalic.otf");
-    font-weight: bold;
-    font-style: italic, oblique;
-}
-*/
 body {
 	font-family: "Cabin", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: 18px;
@@ -37,10 +18,18 @@ body {
 	line-height: 1.8;
 }
 
-h2, h2 a {
+h1 {
+    font-size: 30px;
+    font-size: 3.0rem;
+    line-height: 1.8;
+    font-weight: normal;
+    color: inherit;
+}
+
+h2 {
     font-size: 20px;
     font-size: 2.0rem;
-    line-height: 2.0;
+    line-height: 1.8;
     font-weight: normal;
     color: inherit;
 }

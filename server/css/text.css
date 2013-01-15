@@ -1,0 +1,73 @@
+/*=======================================================================
+
+	❤❤❤ Gumby by Digital Surgeons. ❤❤❤
+	
+	*** This is where you should keep all of your TEXT styles ***
+ 
+ ========================================================================*/
+ 
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-Regular.otf");
+}
+/*
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-Bold.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-Italic.otf");
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-BoldItalic.otf");
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+*/
+body {
+	font-family: "Cabin", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: 18px;
+	font-size: 1.8rem;
+	line-height: 1.8;
+}
+
+h2, h2 a {
+    font-size: 20px;
+    font-size: 2.0rem;
+    line-height: 2.0;
+    font-weight: normal;
+    color: inherit;
+}
+
+.navbar > ul > li > a > .top {
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.footer_bottom p {
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+ 
+ /* ==|== media queries ======================================================
+    PLACEHOLDER Media Queries for Responsive Design.
+    These override the primary ('mobile first') styles
+    Modify as content requires.
+    ========================================================================== */
+ 
+ @media only screen and (min-width: 480px) {
+   /* Style adjustments for viewports 480px and over go here */
+ 
+ }
+ 
+ @media only screen and (min-width: 768px) {
+   /* Style adjustments for viewports 768px and over go here */
+ 
+ }
