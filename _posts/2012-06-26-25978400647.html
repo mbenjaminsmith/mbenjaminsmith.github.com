@@ -1,0 +1,86 @@
+---
+layout: post
+title: Why We are Killing Our Game and Moving from Unity to Moai
+---
+
+<p>We&#8217;re killing our current game after six months of development time. We&#8217;re also starting a new game. In the transition we&#8217;re changing most of the processes that we&#8217;ve put in place including moving from Unity3D to Moai.</p>
+
+<p>One of the hardest decisions you face as an entrepreneur is knowing when to kill a project (or to dump a bad client or to kill a business entirely). To do difficult things it&#8217;s critical to have a &#8220;never die&#8221; attitude. But it&#8217;s also critical to know when to cut losses and move on. If you&#8217;re a student of entrepreneurialism, you&#8217;ve probably heard people talk about the fallacy of recovering &#8220;sunk costs&#8221;, pivoting, &#8220;the dip&#8221;, etc. The bottom line is sometimes it makes sense change your mind and start over.</p>
+
+<p>We&#8217;ve made quite a bit of progress on &#8220;Untitled Space Game&#8221;. It&#8217;s gone through three major iterations. But ultimately it was too unfocused (and possibly too ambitious) for our first game. We&#8217;ve realized that scope should be aggressively limited in order to reduce iteration time to a bare minimum. While we could have gone for a fourth conceptualization of our current game, we decided a clean break would be the best way to go.</p>
+
+<p>A clean break means throwing away a lot of hard work (and some cool art) but it also frees us up to take everything we&#8217;ve learned in our first six months and do things the right way (at least, to the best of our knowledge at this point). That means making a lot of decisions that I won&#8217;t go into here except for our new choice of engine. One of the first things that was discussed when we threw around what we would do differently was the desire to move from Unity to Moai.</p>
+
+<p><img src="http://media.tumblr.com/tumblr_m697sjrgyO1r4qkx4.png"/></p>
+
+<p>If you haven&#8217;t heard about it yet, <a href="http://getmoai.com/" title="Moai">Moai</a> is an open-source 2D (with limited support for 3D) game engine made by Zipline Games. The engine itself is minimal though it supports the major features you would expect in a game engine. It&#8217;s scripted with Lua &#8212; a very terse and performant language that has seen a lot of use in game development. Though it&#8217;s focused on iOS and Android, it also runs natively on Chrome, Windows, Mac and Linux.</p>
+
+<p>When you&#8217;re running a business, you want to pay for things that actually matter. Moai is great in that regard. The engine itself is free. What you pay for (if you choose to) is their cloud offering, which allows you to build networked games, send push notifications, etc with a freemium, scale-as-you-go model. It&#8217;s free to get started and the fees increase only as usage increases. And the prices are very competitive.</p>
+
+<p>But what&#8217;s really attractive about Moai is its mentality of what&#8217;s important in game development. Games today need to be connected &#8212; connected to serve ads, run analytics and performance monitoring, connected for IAP, to connect players and add social elements. Moai seems to start from this point and move outwards, not tack on these features after the fact. Unity, in contrast, doesn&#8217;t include these features in its core offering. Most of the functionality mentioned has to be purchased from a 3rd party and integrated separately.</p>
+
+<p>Moai also keeps the engine as simple as possible. This allows developers to squeeze as much performance out of it as possible. Mobile games today don&#8217;t need eye catching graphics as much as they need to be defensive about running on a wide range of hardware. We saw this again and again developing with Unity. Even though we were following the standard rules of mobile development (low number of draw calls, low number of verts, low memory usage, simple shaders, etc) performance was constantly an issue.</p>
+
+<p>We&#8217;ve talked a bit about why we don&#8217;t like Unity. You might say that this is apples to oranges since we&#8217;re comparing a 3D vs 2D engine. That&#8217;s true of course but I would argue that for most studios focused on mobile there isn&#8217;t a practical difference. The lack of performance and decent controls on most mobile devices makes the 3D experience lacking at best. There is very little immersion in mobile gaming and high production values in 3D art, music, sound and effects would be lost on most players. I don&#8217;t think this is likely to change in the future. Processors might get faster and memory larger but screen size, controls and inconsistent sound are locked into the mobile form factor.</p>
+
+<p>To sum up our decision to switch:</p>
+
+<p>Unity good:</p>
+
+<ul><li>Most of the time it just works across platforms. </li>
+
+<li>Large community. </li>
+
+<li>Royalty-free.</li>
+
+<li>Good built in physics and particle systems.</li>
+
+<li>Decent editor that makes prototyping somewhat fast.</li>
+
+</ul><p>Unity bad:</p>
+
+<ul><li>Closed source (for most users).</li>
+
+<li>Overpriced for its target market (indies, new studios, small studios) with regular paid upgrades.</li>
+
+<li>Lacks many core features (you have to buy community-supplied add-ons or write them yourself).</li>
+
+<li>Analytics, performance tracking, monetization not included.</li>
+
+<li>Performance still lacking for mobile devices.</li>
+
+<li>Very bad code editor (at least on Mac).</li>
+
+<li>Verbose language choices (except for Boo, which is good but lacks documentation and tutorials)</li>
+
+<li>Unpleasant and hard to reach sales and management teams.</li>
+
+</ul><p>Moai good:</p>
+
+<ul><li>Free and open source.</li>
+
+<li>The paid side of Moai (their cloud services) have a freemium, scale-as-you-go model.</li>
+
+<li>Analytics, performance tracking, monetization part of the core offering.</li>
+
+<li>Device &#8220;hosts&#8221; are easily customized.</li>
+
+<li>Responsive forums hosted and moderated by the creators.</li>
+
+</ul><p>Moai bad:</p>
+
+<ul><li>New and unstable.</li>
+
+<li>Documentation and tutorials still somewhat limited.</li>
+
+<li>Not geared towards the inexperienced.</li>
+
+<li>Very limited 3D support.</li>
+
+<li>Admittedly hard to use particle engine.</li>
+
+</ul><p>&#8220;Unpleasant and hard to reach&#8221; should be explained, but I&#8217;m not going to take the time. Personally I&#8217;ve had mostly unpleasant interaction with the Unity team (in person, over email, etc) but that&#8217;s a very small part of why we decided to switch. Having said that, I absolutely do not recommend Unity for mobile development unless you have a very compelling set of reasons why you should use it. It may be popular but it simply is not a good fit.</p>
+
+<p>So now we&#8217;re moving on into this bright new future. Our new game will be simple but fun. There&#8217;s not much to talk about now as most of the game will be decided as we validate our starting assumptions. Ultimately, it feels (down deep in the entrepreneurial gut) like the right move as does going with Moai.</p>
+
+<p>Stay tuned!</p>

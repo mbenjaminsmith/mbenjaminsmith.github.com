@@ -1,0 +1,6 @@
+auto: true
+permalink: /blog/:year/:month/:day/:title.html
+
+email: contact@rapidfirestudio.com
+twitter: http://twitter.com/rapidfirestudio
+facebook: http://facebook.com/rapidfirestudio
