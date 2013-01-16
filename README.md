@@ -6,22 +6,22 @@ This is a non-standard GitHub Pages deployment with a custom plugin for paginati
 
 To create a Jekyll site that works in the same manner, do the following (assuming OS X):
 
-### Create a public GitHub repo with the format <yourgithubusername>.github.com
+Step 1. Create a public GitHub repo with the format <yourgithubusername>.github.com
 
-### Clone your new repo to your local machine
+Step 2. Clone your new repo to your local machine
 
 ```bash
 $ git clone git@github.com:<yourgithubusername>/<yourgithubusername>.github.com.git
 $ cd <yourgithubusername>.github.com
 ```
 
-### Install Jekyll 
+Step 3. Install Jekyll 
 
 ```bash
 $ gem install jekyll
 ```
 
-### Create your first Jekyll site
+Step 4. Create your first Jekyll site
 
 ```bash
 $ mkdir _includes _layouts _posts css js img
@@ -31,17 +31,17 @@ $ touch _config.yml
 $ echo auto: true >> _config.yml
 ```
 
-### Setup your default html scaffolding and style in `default.html` and `style.css`. This site uses the excellent [Gumby Framework](http://gumbyframework.com/)
+Step 5. Setup your default html scaffolding and style in `default.html` and `style.css`. This site uses the excellent [Gumby Framework](http://gumbyframework.com/)
 
-### Your `default.html` file should include a `{{ content }}` template tag in the body. This is where your page content will be rendered
+Step 6. Your `default.html` file should include a `{{ content }}` template tag in the body. This is where your page content will be rendered
 
-### Write your first post in the format YYYY-MM-DD-title.html. Markdown and other formats are available.
+Step 7. Write your first post in the format YYYY-MM-DD-title.html. Markdown and other formats are available.
 
 ```bash
 $ touch _posts/2013-01-16-my-first-post.html
 ```
 
-### Add the following to the top of your post, along with the text of your post
+Step 8. Add the following to the top of your post, along with the text of your post
 
 ```bash
 ---
@@ -52,7 +52,7 @@ $ touch _posts/2013-01-16-my-first-post.html
 <p>Lorem ... </p>
 ```
 
-### Update your `post.html` layout to tie everything together
+Step 9. Update your `post.html` layout to tie everything together
 
 ```bash 
 ---
@@ -62,7 +62,7 @@ $ touch _posts/2013-01-16-my-first-post.html
 <div> {{ page.content }} </div>
 ```
 
-### Next update your `index.html` to act as your landing page and your `blog.html` to act as your blog index
+Step 10. Next update your `index.html` to act as your landing page and your `blog.html` to act as your blog index
 
 ```bash 
 ---
@@ -72,7 +72,7 @@ $ touch _posts/2013-01-16-my-first-post.html
 <put some html content here>
 ```
 
-### Jekyll's built in pagination won't work for non-standard deployments so we'll quickly hack the plugin to work for us
+Step 11. Jekyll's built in pagination won't work for non-standard deployments so we'll quickly hack the plugin to work for us
 
 ```bash
 $ mkdir _plugins
@@ -83,9 +83,9 @@ $ sed -i '' 's/index.html/blog.html/g' _plugins/pagination_custom.rb
 $ echo paginate: 5 >> _config.yml # how many posts per page
 ```
 
-### Now you should be able to use Jekyll's pagination as normal and complete your site
+Step 12. Now you should be able to use Jekyll's pagination as normal and complete your site
 
-### To deploy this site is a little bit less straightforward since GitHub will automatically run the files in your master branch through Jekyll when you push. GitHub won't, however, let you run custom plugins. The solution is to use Jekyll's local output and bypass GitHub's use of it. There are many ways to do this but personally I think the easiest is to move your site's source to a non-standard location and then use a pre-commit hook to copy the files into your root directory, add the new ones and then commit/push. This sounds more complicated than it is.
+Step 13. To deploy this site is a little bit less straightforward since GitHub will automatically run the files in your master branch through Jekyll when you push. GitHub won't, however, let you run custom plugins. The solution is to use Jekyll's local output and bypass GitHub's use of it. There are many ways to do this but personally I think the easiest is to move your site's source to a non-standard location and then use a pre-commit hook to copy the files into your root directory, add the new ones and then commit/push. This sounds more complicated than it is.
 
 ```bash
 $ mkdir _source
@@ -103,7 +103,7 @@ All we've done is moved our source (except for our `_config.yml`) into a directo
 
 GitHub's Jekyll will ignore your `_source` directory as it starts with an underscore so no processing will take place. If you prefer, you can add an empty file named `.nojekyll` to your repo's root directory to turn Jekyll off completely.  
 
-### To finalize our deployment we simply push our repo to GitHub
+Step 14. To finalize our deployment we simply push our repo to GitHub
 
 ```bash
 $ git push origin master
@@ -111,5 +111,5 @@ $ git push origin master
 
 The site will now (or shortly) be available at <yourgithubusername>.github.com. You can find more information [on using Jekyll here](https://github.com/mojombo/jekyll/wiki). 
 
-### If you want to use a custom domain it's possible to do so. [You can read about it here.](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
+Step 15. If you want to use a custom domain it's possible to do so. [You can read about it here.](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
 
