@@ -34,7 +34,7 @@
 		width: 100%;
 	}
 
-	.navbar a.toggle {
+	.navbar a.toggle, .navbar a.toggle:hover, .navbar a.toggle.active {
 		background: #C94747;
 	}
 
