@@ -25,7 +25,7 @@ $ gem install jekyll
 
 ```bash
 $ mkdir _includes _layouts _posts css js img
-$ touch robots.txt 404.html index.html blog.htmlx
+$ touch robots.txt 404.html index.html blog.html
 $ touch _layouts/default.html _layouts/post.html css/style.css
 $ touch _config.yml
 $ echo auto: true >> _config.yml
