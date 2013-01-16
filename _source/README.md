@@ -89,7 +89,7 @@ To create a Jekyll site that works in the same manner, do the following (assumin
 
  ```$ git push origin master```
 
- The site will now (or shortly) be available at <yourgithubusername>.github.com. You can find more information [on using Jekyll here](https://github.com/mojombo/jekyll/wiki).
+ The site will now (or shortly) be available at <yourgithubusername>.github.com. You can find more information [on using Jekyll here](https://github.com/mojombo/jekyll/wiki). 
 
  15. If you want to use a custom domain it's possible to do so. [You can read about it here.](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
 
