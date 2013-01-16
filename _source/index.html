@@ -1,6 +1,16 @@
 ---
 layout: default
+demo: false
+swf_url: /Users/matthew/nothing.swf
 ---
+
+{% if page.demo %}
+<div class="row">
+ <div class="twelve columns" id="demodiv">
+    {% swfobject swf_url %}<style> #demodiv { display: none; } </style>{% endswfobject %}
+  </div>
+</div>
+{% endif %}
 
 <div class="row maincontent">
   <div class="six columns">
