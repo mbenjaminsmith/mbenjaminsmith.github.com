@@ -1,14 +1,19 @@
 ---
 layout: default
-demo: true
-swf_url: file://Users/matthew/Dropbox/Git/dungeondemo/bin/flash/bin/Main.swf
+demo: false
 ---
 
 {% if page.demo %}
-<div class="row">
- <div class="twelve columns" id="demodiv">
-    {% swfobject swf_url %}<style> #demodiv { display: none; } </style>{% endswfobject %}
-  </div>
+<div class="row" id="demorow">
+ <div class="seven columns" id="demodiv">
+    <h1>[DRAFT] Current Game Design</h1>
+    {% swfobject /flash/Main.swf width:480px height:320px %}
+      <style> #demorow { display: none; } </style>
+    {% endswfobject %}
+ </div>
+ <div class="five columns">
+    <p>This is RapidFire's current design-in-progress. To play the demo click the play button and watch your helper (the squirrel) take the safe path through the dungeon. Follow the path to get a high score. Watch out! There are many traps in the dungeon.</p>
+ </div>
 </div>
 {% endif %}
 
