@@ -30,6 +30,14 @@
 		width: 125px;
 	}
 	
+	.navbar > ul.active > li {
+		width: 100%;
+	}
+
+	.navbar a.toggle {
+		background: #C94747;
+	}
+
 	.navbar > ul > li > a {
 		display: block;
 		height: 70px;
@@ -92,13 +100,18 @@
 
 	.footer_bottom {
 		text-align: center;
-	}
-
-	.footer_bottom p {
+		padding: 40px;
 	}
 
 	.archive_excerpt {
 		border-bottom: 1px solid #C94747;
 		padding-bottom: 40px;
 		margin-bottom: 40px;
+	}
+
+	@media only screen and (max-width: 480px) {
+	  /* Style adjustments for viewports 480px and under go here */
+	  .footer_right {
+	  	text-align: center;
+	  }
 	}

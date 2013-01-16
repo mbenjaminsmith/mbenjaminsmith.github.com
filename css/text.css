@@ -44,6 +44,13 @@ h2 {
     font-size: 1.4rem;
     line-height: 1.4;
 }
+
+.promise {
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    text-align: right;     
+}
  
  /* ==|== media queries ======================================================
     PLACEHOLDER Media Queries for Responsive Design.
