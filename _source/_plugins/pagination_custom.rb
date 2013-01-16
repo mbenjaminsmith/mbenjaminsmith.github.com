@@ -31,7 +31,7 @@ module Jekyll
     #                   "next_page" => <Number> }}
     def paginate(site, page)
       all_posts = site.site_payload['site']['posts']
-      pages = Pager.calculate_pages(all_posts, site.config['paginate_custom'].to_i)
+      pages = Pager.calculate_pages(all_posts, site.config['paginate'].to_i)
       (1..pages).each do |num_page|
         pager = Pager.new(site.config, num_page, all_posts, pages)
         if num_page > 1
@@ -66,7 +66,7 @@ module Jekyll
     #
     # Returns true if pagination is enabled, false otherwise.
     def self.pagination_enabled?(config, file)
-      file == 'blog.html' && !config['paginate_custom'].nil?
+      file == 'blog.html' && !config['paginate'].nil?
     end
 
     # Initialize a new Pager.
@@ -78,7 +78,7 @@ module Jekyll
     #             of pages calculated.
     def initialize(config, page, all_posts, num_pages = nil)
       @page = page
-      @per_page = config['paginate_custom'].to_i
+      @per_page = config['paginate'].to_i
       @total_pages = num_pages || Pager.calculate_pages(all_posts, @per_page)
 
       if @page > @total_pages

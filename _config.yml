@@ -4,7 +4,7 @@ plugins: ./_source/_plugins
 auto: true
 permalink: /blog/:year/:month/:day/:title.html
 
-paginate_custom: 5
+paginate: 5
 
 email: contact@rapidfirestudio.com
 twitter: http://twitter.com/rapidfirestudio
