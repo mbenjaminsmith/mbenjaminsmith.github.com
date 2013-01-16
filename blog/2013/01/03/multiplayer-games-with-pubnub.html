@@ -1,0 +1,196 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title> [DRAFT] Multiplayer Games with PubNub | RapidFire Studio Limited</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+  
+  <!--Facebook Metadata /-->
+  <meta property="fb:page_id" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:description" content=""/>
+  <meta property="og:title" content=""/>
+  
+  <!--Google+ Metadata /-->
+  <meta itemprop="name" content="">
+  <meta itemprop="description" content="">
+  <meta itemprop="image" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- CSS: implied media=all -->
+  <!-- <link rel="stylesheet" href="/css/imports.css?20130116161957"> -->
+  <link rel="stylesheet" href="/css/gumby.css?20130116161957">
+  <link rel="stylesheet" href="/css/ui.css?20130116161957">
+  <link rel="stylesheet" href="/css/style.css?20130116161957">
+  <link rel="stylesheet" href="/css/text.css?20130116161957">
+  <!-- end CSS-->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+    <div class="row">
+      <div class="twelve columns special head">
+        <a href="/"><img id="logo" src="/img/RapidFire_logo.png" width="307" height="307" /></a>
+      </div>
+    </div>
+
+    <div class="row navrow">
+      <nav class="navbar">
+      <a href="#" class="toggle" data-for=".navbar > ul"><img src="/img/icon_nav_toggle.gif" /></a>
+      <ul>
+        <li><a href="/blog.html"><span class="top">READ MORE AT OUR</span><br>BLOG</a></li>
+        <li><a href="/games.html"><span class="top">CHECK OUT OUR</span><br>GAMES</a></li>
+        <li></li>
+        <li></li>
+        <li><a href="http://twitter.com/rapidfirestudio"><span class="top">FOLLOW US ON</span><br>TWITTER</a></li>
+        <li><a href="http://facebook.com/rapidfirestudio"><span class="top">FOLLOW US ON</span><br>FACEBOOK</a></li>
+        <li><a href="mailto:contact@rapidfirestudio.com"><span class="top">SEND US AN</span><br>EMAIL</a></li>
+      </ul>
+      </nav>
+    </div>
+</div>
+
+<div class="container content">
+
+ <div class="row maincontent">
+  <div class="eight columns">
+    <h1>[DRAFT] Multiplayer Games with PubNub</h1>
+    <p>As mentioned in an earlier post, mid-year I switched RapidFire to <a href="http://getmoai.com" title="Moai" target="_blank">Moai</a> (from Unity) for a variety of reasons. Moai is a mobile cross-platform game engine released by <a href="http://ziplinegames.com/" title="Zipline Games" target="_blank">Zipline Games</a>. It's open source, free to use (under a CPAL license) and well designed. It's been a pleasure to work with and looking back I think it was definitely a good move for RapidFire.</p>
+<p>Recently I put together an <a href="https://github.com/pubnub/pubnub-api/tree/master/lua-moai" title="PubNub Moai API" target="_blank">API</a> for Moai for <a href="http://www.pubnub.com/" title="PubNub" target="_blank">PubNub</a>&nbsp;in order to use it for multiplayer. If you're not familiar with it, PubNub is a fast and reliable publish/subscribe service that allows for quasi-P2P communication using JSON. PubNub is easy to use and most of the time it's <a href="http://stats.pingdom.com/e7pvn9wfotdy/302344" title="PubNub Average Latency" target="_blank">fast</a>.&nbsp;</p>
+<p>Adding multiplayer to Moai with PubNub requires attention in a few areas. Of course the game will have to be designed in a way that 1) latency will not affect gameplay (to a degree) and 2) game state can be shared in an&nbsp;efficient&nbsp;manner, but we're not going to talk about that now. What we are going to talk about is how to add a layer of reliability to PubNub and then how to initialize a game/channel(s) with PunNub.</p>
+<h2>Adding a Layer of Reliability to PubNub</h2>
+<p>The need for handling reliability ourselves isn't specific to PubNub but could be applied to any communication over an unreliable network. At the transport layer, PubNub is using TCP, which is inherently more reliable than the common alternative UDP (by design) but we still cannot assume that PubNub will delivery every message, in order, within a reasonable amount of time. Even if PubNub was perfect, we still can't&nbsp;guarantee&nbsp;that our users are going to have a reliable connection from their mobile phone.</p>
+<p>Coordinating something over an unreliable communications channel will always carry a level of uncertainly. The <a href="http://en.wikipedia.org/wiki/Two_Generals'_Problem" title="Two Generals' Problem" target="_blank">Two Generals' Problem</a>&nbsp;illustrates it well. In essence, if we can't trust our communications channel and messages can't be ignored, then the recipient has to acknowledge receipt, but since we can't trust our channel the acknowledgement is also unreliable. If we can't trust *any* message then it becomes theoretically impossible to rely on that channel.</p>
+<p>Practically however there are ways to make the channel reliable enough. All we have to do is send a message and if we haven't&nbsp;received&nbsp;a response within a certain amount of time then re-send that message. There are a couple ways to look at the problem when deciding how long to wait: One, we could assume that the message will be successfully acknowledged and pick a time that is close to our worst case latency. Or two, we could assume that our message will fail and pick a time close to our minimum or average latency.&nbsp;</p>
+<p>The former minimizes redundancy at the expense of increased latency while the latter reverses the two. I chose the latter in this case since reducing latency is worth the increased network usage.&nbsp;</p>
+<p>Either way we have to assume that our recipient may&nbsp;receive&nbsp;more than one of the same message (we should make that assumption anyway, so we're killing two birds with one stone). In other words, we have to ensure that messages are idempotent. Practically handling that is trivial since we can encode our messages with unique IDs. If the recipient is&nbsp;receiving&nbsp;a message with a specific ID for the first time then it should handle the related action. If we see the same message again, we just ignore it.</p>
+<p>The sender sends the current message at interval n (whatever we decide that is) until an acknowledgement is received. Once it's received, we can cancel the timer loop for that message and start sending the next available message, if any is waiting. If i intervals have passed, then we can assume that our channel is no longer viable and act accordingly (either by presenting a "slow network" indicator to our user or by ending the game).</p>
+<p>As mentioned, we get filtering of redundant messages for free with this approach. Since we're queueing messages one at a time, we also get message ordering for free. The best part is that the whole system is very easy to implement and either 1) we're going to have our message&nbsp;delivered&nbsp;as quickly as&nbsp;possible&nbsp;or 2) we're going to be able to determine if our channel has dropped or otherwise become too slow to play our game.</p>
+<h2>Initializing a Multiplayer Game with PubNub</h2>
+<p>We now have a way to reliably send messages between our users but we still need a way to connect those users. PubNub works by publishing and subscribing to a unique "channel" as identified by a unique string. That brings us to our next challenge: how to we decide upon and coordinate a unique channel to use for the game?</p>
+<p>In our case we're using Apple's Game Center for matchmaking. While game center will manage individual games between users in its normal mode, we're using <a href="http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/GameKit_Guide/Introduction/Introduction.html" title="GameKit" target="_blank">Game Center's "hosted" mode</a>, which allows us to use their matchmaking but our own communication channel for the actual game data. (We're doing so so we can use the same backend for other, non-Apple platforms.)</p>
+<p>Hosted mode isn't that helpful and only gives us a list of user IDs to work with when the matchmaking phase is complete.&nbsp;That means we have to come up with a game ID from those user IDs as well as come up with a way to distinguish that ID from any previous games that may have been played by the same set of users.</p>
+<p>Let's say we have two IDs: "player1" and "player2". To make a game ID that both players can agree on we can simply alphabetize the IDs and then combine them: "player1player2". The problem with that is we may have very recently played a game on the channel "player1player2" and we also don't know what order our players will connect to that channel will be.&nbsp;</p>
+<p>That means we either 1) have to look at "historical" messages in the PubNub channel (which PubNub does have limited support for) and differentiate our last game from our current game or 2) we have to be able to safely ignore some of the messages at the beginning of the game.</p>
+<p>To solve this problem we need a way to make our game's ID unique. The main challenge there is that we have no way to share that unique ID with the different players. If we don't already know the channel's ID then there's no way to connect to share any additional information.</p>
+<p>How I ended up solving these problems in practice was relatively straightforward. We can never share any information beyond the list of IDs we receive from Apple but those turn out to be enough (Apple could make this much easier by also supplying a match ID). After we've alphabetized our player IDs, we decide that the first ID will be the "master". Both players connect to channel "player1player2" and the master starts broadcasting a unique ID (a random string).&nbsp;Since we don't know the order in which the players will connect to the channel, we just keep re-sending the unique ID until the other player(s) have connected to the channel and&nbsp;received&nbsp;the unique ID.&nbsp;</p>
+<p>By ignoring PubNub channel history (which is the default way to use it) we know that we're not&nbsp;receiving&nbsp;a unique ID from a previous match, since we're only receiving messages that have been published after we have subscribed. As the other, "slave", players received the unique ID, we acknowledge the master. When the master has received acknowledgements from each slave, then we can start our game.</p>
+<p>You may have figured out by now that since we're ignoring the channel's history we shouldn't actually need a unique ID to differentiate the game from any previous games. That's probably true most of the time but since it's theoretically possible for a message to be delayed for a long time and for two games to be initiated in fairly rapid succession &nbsp;we can imagine an edge case where a message from a previous game could "leak" into our current one. Although the&nbsp;likelihood&nbsp;may be very low, protecting against it is easy enough that we might as well do it.</p>
+<p>Instead of sending that unique ID in every message and checking it each time, I simply open a new channel: "player1player2uniqueID". Once we've switched to our unique channel, we start sending messages using our "reliable" system&nbsp;described&nbsp;above, so there's no need to acknowledge that we're all ready to use the new channel.</p>
+<h2>Syncing Game Clocks</h2>
+<p>Although we have a practically&nbsp;reliable&nbsp;channel now we still want to minimize how much we use it. Why? Well since we're sending messages one at a time, we're limited in how many messages we can send per second (or other unit of time). We also want to minimize how much bandwidth we're using which is more of an issue since PubNub's JSON over TCP isn't the most&nbsp;efficient&nbsp;way to send info between users. (A custom data format over UDP is more common for multiplayer games, though that's much harder to implement and isn't&nbsp;appropriate&nbsp;for what we're doing.)</p>
+<p>And how much should we send? As little as we can get away with. How much that might be is so game-specific that we can't&nbsp;generalize about it. But we can talk about the purpose of that communication and the best possible avenue for&nbsp;minimizing&nbsp;network communication. &nbsp;</p>
+<p>Our network channel in a multiplayer game is a way to share state between players. Our state at any point in time is determined by our starting state, the algorithms that determine the evolution of that state (say, how many monsters spawn per minute and where they spawn) as well as each player's input.&nbsp;</p>
+<p>At a bare minimum we have to share the player's input. But if we're clever, we can avoid sharing almost everything else. Some things don't have to be perfectly in sync and some things can be kept in sync by making sure the evolution of their state is perfectly deterministic.</p>
+<p>A single-threaded program running in isolation (i.e., not connected to a network or accepting user input) is deterministic by default. That might seem obvious but it's important to remember since it allows us to easily decouple players in a multiplayer game. Even the "randomness" we're likely to introduce to our game's evolution is most likely pseudo-random and can be controlled. Lua's random library is a&nbsp;pseudo&nbsp;random number generator that accepts a "seed" value that determines what "random" numbers it will produce. We can exploit these facts to develop something that is&nbsp;seemingly&nbsp;random yet can be kept in&nbsp;sync&nbsp;between different players without sending information over the network.</p>
+<p>How we do this is beyond the scope of this post but let's just assume that we've developed a completely deterministic game that will evolve in a deterministic way and independent of any user input. (That sounds a lot more complicated than it actually is.) If that's the case, then in order to keep every player's game in sync we only have to share a starting random seed value (usually a large integer) as well as a point in time to start the game's simulation.</p>
+<p>This latter requirement is actually a lot more complicated theoretically. Similar to our network&nbsp;reliability&nbsp;issues above, it's not practically possible to sync two clocks over a network to a very high degree of accuracy. But like the network issues above it's relatively straightforward to solve this problem "well enough" to play a game.</p>
+<p>We solve the problem by measuring our average latency between players and using that latency as an offset to subtract from some future starting time (the time that we'll start each clock). In our case our master will send a "start clock" message along with the average one-way latency that it has measured for each slave. The slave will subtract this latency from the start time (since that's how long it should have taken the message) and start its own clock at the resulting time.</p>
+<p>To implement this, we measured the latency of the n init messages that we sent to broadcast the game's unique ID. We then piggybacked the clock start message along with the "game start" message we've explained above.&nbsp;</p>
+
+
+  </div>
+  <div class="four columns">
+  	<h2>A RapidFire Blog</h2>
+<p>This blog consists of updates about this company as well as select information about the game industry and gaming.</p>
+<p>It's company policy to publish [DRAFTS] of posts that are felt to be informative but not yet in a final state.</p>
+<p>Posts are written by RapidFire's founder, Matthew Smith, unless otherwise noted.</p>
+<p>You're welcome to contact him: <a href="mailto:matthew@rapidfirestudio.com">matthew@rapidfirestudio.com</a></p>
+<p>This blog was built using Jekyll and hosted on GitHub Pages. You can learn more and even fork and modify this blog at its <a href="https://github.com/mbenjaminsmith/mbenjaminsmith.github.com">public repository</a>.</p>
+
+  </div>
+</div>
+
+</div>
+
+<div class="container">
+    <div class="row footer">
+      <div class="six columns footer_left">
+        <p>RapidFire Studio Limited </br>
+           20th Floor, Central Tower </br>
+           28 Queen's Road, Central </br>
+           Hong Kong SAR
+        </p>
+      </div>
+      <div class="six columns footer_right">
+        <p> <a href="mailto:contact@rapidfirestudio.com">contact@rapidfirestudio.com</a> </br>
+            <a href="http://twitter.com/rapidfirestudio">twitter.com/rapidfirestudio</a> </br>
+            <a href="http://facebook.com/rapidfirestudio">facebook.com/rapidfirestudio</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="row footer">
+      <div class="twelve columns footer_bottom">
+        <p><a href="/legal.html">Terms of Service</a> | <a href="/legal.html#privacy">Privacy Policy</a> | Design and Content Copyright 2011 - 2013 RapidFire Studio Limited</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+  <script src="/js/libs/gumby.min.js"></script>
+  <script src="/js/plugins.js?20130116161957"></script>
+  <script src="/js/main.js?20130116161957"></script>
+  <!-- end scripts-->
+
+  
+  <!-- Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+    Modernizr.load({
+      load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    });
+  </script>
+
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+  <!-- Social Widget Rendering Javascript /-->
+  <script src="http://platform.twitter.com/widgets.js"></script>
+  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  <!-- End Social Widget Rendering Javascript /-->
+  </div>
+  <!--
+  <a href="https://github.com/mbenjaminsmith/mbenjaminsmith.github.com">
+    <img  style="position: absolute; top: 0; left: 0; border: 0;" 
+          src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub">
+  </a>
+  -->
+</body>
+</html>
