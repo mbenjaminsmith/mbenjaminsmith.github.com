@@ -109,7 +109,7 @@ Step 14. To finalize our deployment we simply push our repo to GitHub
 $ git push origin master
 ```
 
-The site will now (or shortly) be available at <yourgithubusername>.github.com. You can find more information [on using Jekyll here](https://github.com/mojombo/jekyll/wiki). 
+The site will now (or shortly) be available at &lt;yourgithubusername&gt;.github.com. You can find more information [on using Jekyll here](https://github.com/mojombo/jekyll/wiki). 
 
 Step 15. If you want to use a custom domain it's possible to do so. [You can read about it here.](https://help.github.com/articles/setting-up-a-custom-domain-with-pages)
 
