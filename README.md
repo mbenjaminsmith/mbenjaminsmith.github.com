@@ -99,7 +99,7 @@ $ echo source: ./_source >> _config.yml
 $ echo plugins: ./_source/_plugins >> _config.yml
 ```
 
-All we've done is moved our source (except for our `_config.yml`) into a directory called `_source` and updated our config file to our new location. Jekyll can still be run from the root directory and the site should build to the `_site` directory and function as normal. In order to simplify deployment we add a `pre-commit` script to our git hooks directory and tell it copy the files from `_site` to our root dir. Since `pre-commit` gets run before the commit, we need to explicitly add our new files via `git add` so they're seen by git before the commit is actually made.
+All we've done is moved our source (except for our `_config.yml`) into a directory called `_source` and updated our config file to our new location. Jekyll can still be run from the root directory and the site should build to the `_site` directory and function as normal. In order to simplify deployment we add a `pre-commit` script to our git hooks directory and tell it to copy the files from `_site` to our root dir. Since `pre-commit` gets run before the commit, we need to explicitly add our new files via `git add` so they're seen by git before the commit is actually made.
 
 GitHub's Jekyll will ignore your `_source` directory as it starts with an underscore so no processing will take place. If you prefer, you can add an empty file named `.nojekyll` to your repo's root directory to turn Jekyll off completely.  
 
