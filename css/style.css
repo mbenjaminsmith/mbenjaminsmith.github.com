@@ -118,8 +118,17 @@
 	}
 
 	@media only screen and (max-width: 480px) {
-	  /* Style adjustments for viewports 480px and under go here */
-	  .footer_right {
-	  	text-align: center;
-	  }
+	  	/* Style adjustments for viewports 480px and under go here */
+	  	.footer_right {
+	  		text-align: center;
+	  	}
+	  	.nomobile {
+			display: none;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.nomobile {
+			display: none;
+		}
 	}
