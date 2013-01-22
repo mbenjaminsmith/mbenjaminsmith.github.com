@@ -6,7 +6,7 @@ This is a non-standard GitHub Pages deployment with a custom plugin for paginati
 
 To create a Jekyll site that works in the same manner, do the following (assuming OS X):
 
-Step 1. Create a public GitHub repo with the format &lg;yourgithubusername&gt;.github.com.
+Step 1. Create a public GitHub repo with the format &lt;yourgithubusername&gt;.github.com.
 
 Step 2. Clone your new repo to your local machine.
 
