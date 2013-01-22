@@ -85,7 +85,7 @@ $ echo 'paginate: 5' >> _config.yml # how many posts per page
 
 Step 12. Now you should be able to use Jekyll's pagination as normal and complete your site.
 
-Step 13. To deploy this site is a little bit less straightforward since GitHub will automatically run the files in your master branch through Jekyll when you push. GitHub won't, however, let you run custom plugins. The solution is to use Jekyll's local output and bypass GitHub's use of it. There are many ways to do this but personally I think the easiest is to move your site's source to a non-standard location and then use a pre-commit hook to copy the files into your root directory, add the new ones and then commit/push. This sounds more complicated than it is.
+Step 13. To deploy this site is a little bit less straightforward since GitHub will automatically run the files in your master branch through Jekyll when you push. GitHub won't, however, let you run custom plugins. The solution is to use Jekyll's local output and bypass GitHub's use of it. There are many ways to do this but personally I think the easiest is to move your site's source to a non-standard location and then use a pre-commit hook to copy the generated files into your root directory, add the new ones and then commit/push. This sounds more complicated than it is.
 
 ```bash
 $ mkdir _source
