@@ -12,3 +12,7 @@ facebook: http://facebook.com/rapidfirestudio
 
 description: "RapidFire Studio makes casual, cross-platform games"
 shorttitle: "RapidFire Studio"
+
+asset_pipeline:
+    output_path: min
+    gzip: true
