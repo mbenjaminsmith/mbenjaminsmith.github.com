@@ -21,7 +21,7 @@ Step 3. Install Jekyll
 $ gem install jekyll
 ```
 
-Step 4. Create your first Jekyll site.
+Step 4. Create your first Jekyll site. 
 
 ```bash
 $ mkdir _includes _layouts _posts css js img

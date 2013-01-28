@@ -32,19 +32,21 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <!-- CSS: implied media=all -->
-  <!--
+ 
   {% css_asset_tag global %}
   - /css/gumby.css
   - /css/ui.css
   - /css/style.css
   - /css/text.css
   {% endcss_asset_tag %}
-  -->
+ 
   <!-- <link rel="stylesheet" href="/css/imports.css?{{ site.time | date: "%Y%m%d%H%M%S" }}"> -->
+  <!--
   <link rel="stylesheet" href="/css/gumby.css?{{ site.time | date: "%Y%m%d%H%M%S" }}">
   <link rel="stylesheet" href="/css/ui.css?{{ site.time | date: "%Y%m%d%H%M%S" }}">
   <link rel="stylesheet" href="/css/style.css?{{ site.time | date: "%Y%m%d%H%M%S" }}">
   <link rel="stylesheet" href="/css/text.css?{{ site.time | date: "%Y%m%d%H%M%S" }}">
+  -->
   <!-- end CSS-->
 
   <!-- All JavaScript at the bottom, except for Modernizr / Respond.
@@ -52,7 +54,7 @@
        For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
   <script src="/js/libs/modernizr-2.0.6.min.js"></script>
   <!-- swfobject.js needs to appear above any embedded flash -->
-  <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script> -->
 </head>
 <body>
 
@@ -115,9 +117,17 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
+  {% javascript_asset_tag global %}
+  - /js/libs/gumby.min.js
+  - /js/plugins.js
+  - /js/main.js
+  {% endjavascript_asset_tag %}
+
+  <!--
   <script src="/js/libs/gumby.min.js"></script>
   <script src="/js/plugins.js?{{ site.time | date: "%Y%m%d%H%M%S" }}"></script>
   <script src="/js/main.js?{{ site.time | date: "%Y%m%d%H%M%S" }}"></script>
+  -->
   <!-- end scripts-->
 
   
@@ -152,10 +162,12 @@
   <!-- End Social Widget Rendering Javascript /-->
   </div>
   
+  <!-- GitHub badge -->
   <a class="nomobile" href="https://github.com/mbenjaminsmith/mbenjaminsmith.github.com">
     <img  style="position: absolute; top: 0; right: 0; border: 0;" 
           src="/img/forkme_right_red_c94747.png" alt="Fork me on GitHub">
   </a>
+  <!-- end GitHub badge -->
   
 </body>
 </html>
