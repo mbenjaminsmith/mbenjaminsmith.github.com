@@ -6,9 +6,9 @@
  
  ========================================================================*/
  	body {
-  		background: #F9F9F7;
-  		background-image: url('../img/noise.png');
-  		color: #562D2D;
+  		background: #222222;
+  		background-image: url('../img/noise2.png');
+  		color: #f9f9f7;
   	}
 
   	.row {  
@@ -88,13 +88,13 @@
 	}
 
 	.footer {
-		background-color: #C48686;
+		background-color: #202020;
 		background-image: none;
-		color: #F9F9F7;
+		color: #f9f9f7;
 	}
 
 	.footer a {
-		color: #F9F9F7;
+		color: #f9f9f7;
 	}
 
 	.footer_left {
