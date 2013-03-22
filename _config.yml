@@ -1,4 +1,3 @@
-auto: true
 permalink: /blog/:year/:month/:day/:title.html
 
 email: contact@rapidfirestudio.com
