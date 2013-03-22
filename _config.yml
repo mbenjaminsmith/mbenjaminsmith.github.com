@@ -1,18 +1,9 @@
-source: ./_source
-plugins: ./_source/_plugins
-
 auto: true
 permalink: /blog/:year/:month/:day/:title.html
-
-paginate: 5
 
 email: contact@rapidfirestudio.com
 twitter: http://twitter.com/rapidfirestudio
 facebook: http://facebook.com/rapidfirestudio
 
-description: "RapidFire Studio makes casual, cross-platform games"
+description: "RapidFire Studio makes games"
 shorttitle: "RapidFire Studio"
-
-asset_pipeline:
-    output_path: min
-    gzip: true
