@@ -5,12 +5,12 @@ layout: default
 <div class="row maincontent">
   <div class="eight columns">
     <h1>{{ page.title }}</h1>
-    {% if page.video %}
-    <p>
-		<iframe width="540" height="304" src="{{ page.video }}" frameborder="0" allowfullscreen></iframe>
-	</p>
-	{% endif %}
     {{ page.content }}
+    {% if post.video %}
+	</p>
+	<p>
+		<iframe width="540" height="304" src="{{ page.video }}" frameborder="0" allowfullscreen></iframe>
+	{% endif %}
   </div>
   <div class="four columns">
   	{% include blog_info.html %}
