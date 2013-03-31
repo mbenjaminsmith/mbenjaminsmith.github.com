@@ -13,7 +13,7 @@ layout: default
 	{% endif %}
 
 	{% if page.images %}
-		{% for image in images %}
+		{% for image in post.images %}
 			<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
 			<p>{{ image.caption }}</p>
 		{% endfor %}
