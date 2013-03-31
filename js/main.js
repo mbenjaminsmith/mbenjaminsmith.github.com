@@ -1,2 +1,4 @@
 $(function() {
+
+	$('a.gallery').colorbox();
 });

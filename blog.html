@@ -7,16 +7,23 @@ layout: default
     <h1>Most Recent Updates</h1>
     {% for post in site.posts %}
 		<h2>{{ post.title }}</h2>
+
 		{% if post.video %} 
-		<p>
-			<iframe width="540" height="304" src="{{ post.video }}" frameborder="0" allowfullscreen></iframe>
-		</p>
+		<p> <iframe width="540" height="304" src="{{ post.video }}" frameborder="0" allowfullscreen></iframe> </p>
 		{% endif %}
+
 		<p class="archive_excerpt">	
 			<span>{{ post.date | date: "%B %e, %Y" | ordinalize  }} &gt;&gt;</span>
 			{{ post.content | strip_html | truncatewords: 100 }} 
 			<a href="{{ post.url }}">read more &gt;&gt;</a>
 		</p>
+
+		{% if post.images %}
+			{% for image in images limit:1 %}
+				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
+				<p>{{ image.caption }}</p>
+			{% endfor %}
+		{% endif %}
 	{% endfor %}
   </div>
   

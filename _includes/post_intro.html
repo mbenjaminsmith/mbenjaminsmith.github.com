@@ -2,10 +2,19 @@
 <div>
 	<p>	<span>{{ post.date | date: "%B %e, %Y" | ordinalize  }} &gt;&gt;</span>
 		{{ post.content | strip_html | truncatewords: 25 }} 
+
 		{% if post.video %}
 		</p>
 		<p>
 			<iframe width="380" height="214" src="{{ post.video }}" frameborder="0" allowfullscreen></iframe>
 		{% endif %}
+
+		{% if post.images %}
+			{% for image in images limit:1 %}
+				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
+				<p>{{ image.caption }}</p>
+			{% endfor %}
+		{% endif %}
+
 		<a href="{{ post.url }}">read more &gt;&gt;</a></p>
 </div>

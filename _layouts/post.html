@@ -5,12 +5,20 @@ layout: default
 <div class="row maincontent">
   <div class="eight columns">
     <h1>{{ page.title }}</h1>
+
     {{ page.content }}
+
     {% if page.video %}
-	</p>
-	<p>
-		<iframe width="540" height="304" src="{{ page.video }}" frameborder="0" allowfullscreen></iframe>
+	<p> <iframe width="540" height="304" src="{{ page.video }}" frameborder="0" allowfullscreen></iframe> </p>
 	{% endif %}
+
+	{% if page.images %}
+		{% for image in images %}
+			<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
+			<p>{{ image.caption }}</p>
+		{% endfor %}
+	{% endif %}
+
   </div>
   <div class="four columns">
   	{% include blog_info.html %}
