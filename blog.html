@@ -12,12 +12,6 @@ layout: default
 		<p> <iframe width="540" height="304" src="{{ post.video }}" frameborder="0" allowfullscreen></iframe> </p>
 		{% endif %}
 
-		<p class="archive_excerpt">	
-			<span>{{ post.date | date: "%B %e, %Y" | ordinalize  }} &gt;&gt;</span>
-			{{ post.content | strip_html | truncatewords: 100 }} 
-			<a href="{{ post.url }}">read more &gt;&gt;</a>
-		</p>
-
 		{% if post.images %}
 			{% for image in post.images limit:1 %}
 				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}.png"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}-540.png"> </a>
@@ -25,6 +19,13 @@ layout: default
 				{{ image.caption }}</p>
 			{% endfor %}
 		{% endif %}
+
+		<p class="archive_excerpt">	
+			<span>{{ post.date | date: "%B %e, %Y" | ordinalize  }} &gt;&gt;</span>
+			{{ post.content | strip_html | truncatewords: 100 }} 
+			<a href="{{ post.url }}">read more &gt;&gt;</a>
+		</p>
+
 	{% endfor %}
   </div>
   
