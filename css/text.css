@@ -9,22 +9,26 @@
 @font-face {
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Regular.otf");
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Bold.otf");
     font-weight: bold;
+    font-style: normal;
 }
 @font-face {
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Italic.otf");
-    font-style: italic, oblique;
+    font-weight: normal;
+    font-style: italic;
 }
 @font-face {
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-BoldItalic.otf");
     font-weight: bold;
-    font-style: italic, oblique;
+    font-style: italic;
 }
 
 body {
