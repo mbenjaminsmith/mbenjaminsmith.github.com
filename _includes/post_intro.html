@@ -12,7 +12,6 @@
 		{% if post.images %}
 			{% for image in post.images limit:1 %}
 				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
-				<p>{{ image.caption }}</p>
 			{% endfor %}
 		{% endif %}
 
