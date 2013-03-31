@@ -20,7 +20,7 @@ layout: default
 
 		{% if post.images %}
 			{% for image in post.images limit:1 %}
-				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a>
+				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}.png"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}-540.png"> </a>
 				<br> 
 				{{ image.caption }}</p>
 			{% endfor %}

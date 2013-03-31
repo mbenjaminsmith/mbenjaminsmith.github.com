@@ -15,7 +15,7 @@ layout: default
 	{% if page.images %}
 		{% for image in page.images %}
 			<p> 
-				<a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a>
+				<a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}.png"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}-540.png"> </a>
 				<br>
 				{{ image.caption }}
 			</p>

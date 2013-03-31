@@ -11,7 +11,7 @@
 
 		{% if post.images %}
 			{% for image in post.images limit:1 %}
-				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="380" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
+				<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}.png"> <img width="380" src="{{ site.content_imgs }}/{{ image.src }}-540.png"> </a> </p>
 			{% endfor %}
 		{% endif %}
 
