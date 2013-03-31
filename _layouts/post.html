@@ -14,8 +14,11 @@ layout: default
 
 	{% if page.images %}
 		{% for image in page.images %}
-			<p> <a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a> </p>
-			<p>{{ image.caption }}</p>
+			<p> 
+				<a class="gallery" href="{{ site.content_imgs }}/{{ image.src }}"> <img width="540" src="{{ site.content_imgs }}/{{ image.src }}"> </a>
+				<br>
+				{{ image.caption }}
+			</p>
 		{% endfor %}
 	{% endif %}
 
