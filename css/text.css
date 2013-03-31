@@ -22,13 +22,13 @@
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Italic.otf");
     font-weight: normal;
-    font-style: italic, oblique;
+    font-style: italic;
 }
 @font-face {
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-BoldItalic.otf");
     font-weight: bold;
-    font-style: italic, oblique;
+    font-style: italic;
 }
 
 body {
