@@ -10,6 +10,22 @@
     font-family: "Cabin";
     src: url("/fonts/Cabin/Cabin-Regular.otf");
 }
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-Bold.otf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-Italic.otf");
+    font-style: italic, oblique;
+}
+@font-face {
+    font-family: "Cabin";
+    src: url("/fonts/Cabin/Cabin-BoldItalic.otf");
+    font-weight: bold;
+    font-style: italic, oblique;
+}
 
 body {
 	font-family: "Cabin", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
